@@ -1,16 +1,31 @@
-# This is a sample Python script.
+# Для подключения библиотеки к проекту ее нужно прописать в блоке импортов:
+import telebot
+# BotFather – это официальный Telegram бот для создания и настройки других ботов.
+MY_TOKEN = '5902676518:AAEGsMDlE9nEoRemyC3N5gg692x5uWMGaBc'
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Задание 3.2. Подключение библиотеки telebot.
+# Существует несколько библиотек для создания Telegram ботов. Самая простая из них, с которой вы познакомитесь в первую
+# очередь – библиотека telebot.
+# Официальную документацию этой библиотеки можно найти на сайте https://pypi.org/project/pyTelegramBotAPI/
+
+# Задание 3.3. Создание бота.
+# Далее вам необходимо создать объект класса TeleBot, и в качестве входного значения передать ему тот самый токен:
+bot = telebot.TeleBot(MY_TOKEN)
+
+# Задание 3.4. Настройка реакции бота на команду.
+# Как правило, первой командой для Telegram ботов является команда start. Именно ее обработку вы напишете первой.
+# С помощью метода message_handler() определите команду start, а затем напишите функцию обработки этой команды:
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+@bot.message_handlers(commands=['start'])  # добавление команды старт.
+# Функция обработки команды "старт"
+def start(message):
+    bot.send_message(message.chat.id, 'Привет, я твой первый бот!')
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Задание 3.5. Запуск и тестирование бота.
+bot.polling(none_stop=True)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
+
