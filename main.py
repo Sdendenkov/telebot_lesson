@@ -20,11 +20,18 @@ bot = telebot.TeleBot(MY_TOKEN)
 @bot.message_handler(commands=['start'])  # добавление команды старт.
 # Функция обработки команды "старт"
 def start(message):
-    bot.send_message(message.chat.id, 'Привет, я твой первый бот!')
+    user_name = message.from_user.first_name
+    me = bot.get_me().first_name
+    bot.send_message(message.chat.id, f'{me}: Привет, {user_name}! я твой первый бот!')
 
 
 # Задание 3.5. Запуск и тестирование бота.
 bot.polling(none_stop=True)
+
+# Когда мы общаемся с ботами, они по умолчанию собирают о нас общедоступную информацию, наш идентификатор, имя,
+# и так далее. Поэтому боту необязательно спрашивать, как зовут пользователя, он может сразу обратиться к нему по имени.
+
+
 
 
 
