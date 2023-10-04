@@ -17,7 +17,7 @@ bot = telebot.TeleBot(MY_TOKEN)
 # С помощью метода message_handler() определите команду start, а затем напишите функцию обработки этой команды:
 
 
-@bot.message_handlers(commands=['start'])  # добавление команды старт.
+@bot.message_handler(commands=['start'])  # добавление команды старт.
 # Функция обработки команды "старт"
 def start(message):
     bot.send_message(message.chat.id, 'Привет, я твой первый бот!')
